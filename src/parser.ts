@@ -1,16 +1,19 @@
 class Parser {
   private input: string[];
   private currentToken: string | null;
+  private currentSpeaker: string | null;
 
   constructor(inputString: string) {
     this.input = Array.from(inputString);
     this.currentToken = null;
+    this.currentSpeaker = null;
   }
 
-  public parse(): string[] {
+  public parse(): [string[], string[]] {
     try {
       this.currentToken = this.getNextToken();
-      return this.oracion();
+      const [words, speakers] = this.oracion();
+      return [words, speakers];
     } catch (e) {
       console.error(e);
       throw new Error("La oración no forma parte de la lengua española");
@@ -38,29 +41,39 @@ class Parser {
     }
   }
 
-  private oracion(): string[] {
-    if (this.isLetra(this.currentToken)) {
-      return [this.palabra()].concat(this.cuerpo());
+  private oracion(): [string[], string[]] {
+    if (this.currentToken !== null && this.isSpeakerTag(this.currentToken)) {
+      this.processSpeakerTag();
+      return this.oracion();
+    } else if (this.isLetra(this.currentToken)) {
+      const [palabra, speaker] = this.palabra();
+      const [words, speakers] = this.cuerpo();
+      return [[palabra].concat(words), [speaker].concat(speakers)];
     } else {
       this.simbolo();
       return this.cuerpo();
     }
   }
 
-  private cuerpo(): string[] {
+  private cuerpo(): [string[], string[]] {
     if (this.currentToken === null) {
-      return [];
+      return [[], []];
     }
-    if (this.isLetra(this.currentToken)) {
-      return [this.palabra()].concat(this.cuerpo());
+    if (this.isSpeakerTag(this.currentToken)) {
+      this.processSpeakerTag();
+      return this.cuerpo();
+    } else if (this.isLetra(this.currentToken)) {
+      const [palabra, speaker] = this.palabra();
+      const [words, speakers] = this.cuerpo();
+      return [[palabra].concat(words), [speaker].concat(speakers)];
     } else {
       this.simbolo();
       return this.cuerpo();
     }
   }
 
-  private palabra(): string {
-    return this.letra() + this.cola();
+  private palabra(): [string, string] {
+    return [this.letra() + this.cola(), this.currentSpeaker || 'UNKNOWN'];
   }
 
   private cola(): string {
@@ -128,7 +141,7 @@ class Parser {
   }
 
   private simbolo(): string {
-    const symbols = [" ", ",", ".", ";", ":", "¡", "!", "¿", "?", "'", "\"", "(", ")", "\n", "\t", "[", "]", "{", "}", "-", "_"];
+    const symbols = [" ", ",", ".", ";", ":", "¡", "!", "¿", "?", "'", "\"", "(", ")", "\n", "\t", "[", "]", "{", "}", "-", "_", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
     if (!this.currentToken) {
       throw new Error("No current token available");
     }
@@ -144,6 +157,25 @@ class Parser {
   private isLetra(char: string | null): boolean {
     if (!char) return false;
     return /[a-záéíóúüñA-ZÁÉÍÓÚÜÑ]/.test(char);
+  }
+
+  private isSpeakerTag(token: string): boolean {
+    return token === '[';
+  }
+
+  private processSpeakerTag(): void {
+    let tag = '';
+    this.match('[');
+    
+    while (this.currentToken !== null && this.currentToken !== ']') {
+      tag += this.currentToken;
+      this.currentToken = this.getNextToken();
+    }
+    
+    if (this.currentToken === ']') {
+      this.match(']');
+      this.currentSpeaker = tag;
+    }
   }
 }
 

@@ -6,14 +6,15 @@ async function main() {
     const inputText = await Deno.readTextFile("input/input.txt");
 
     const parser = new Parser(inputText);
-    const parsedWords = parser.parse();
+    const [parsedWords, speakers] = parser.parse();
 
-    const tokenizer = await MinimalTokenizer.create(parsedWords);
+    const tokenizer = await MinimalTokenizer.create(parsedWords, speakers);
     tokenizer.buscarLexemas();
 
     console.log("\nEvaluación:");
     console.log(`Tiene saludo: ${tokenizer.hasSaludo ? "Si" : "No"}`);
     console.log(`Tiene despedida: ${tokenizer.hasDespedida ? "Si" : "No"}`);
+    console.log(`Tiene identificación del cliente: ${tokenizer.hasIdentificacion ? "Si" : "No"}`);
 
     const [message, score] = tokenizer.evaluation;
     console.log(`\nEvaluación final: ${message}`);

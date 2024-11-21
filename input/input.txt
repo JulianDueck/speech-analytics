@@ -1,7 +1,91 @@
-Buenos días, le saluda Joanna de atención al cliente, ¿en qué puedo ayudarle?
-Puedo darle esa información. Por favor, ¿me facilita su número de documento?
-Gracias, una pregunta de seguridad, ¿puede darme el año de su fecha de nacimiento?
-Gracias. Verifico que su saldo es de doscientos trienta mil guaraníes a la fecha de ayer.
-¿Algo más que atención pueda hacer por usted?
-Gracias por llamar al servicio de atención al cliente.
-Que tenga un buen día.
+[Orador 2]
+Hola, bienvenida al Área de Atención al Cliente. Soy Arquímedes. ¿Con quien hablo?
+
+[Orador 1]
+Sí, sí, sí, necesito que me ayudes porque mi canal no lo puedo ver y yo lo pago todos los meses. ¿Cómo es posible que ahora me dicen que lo tengo que contratar?
+
+[Orador 2]
+Ok, claro que sí. Vamos a validar. ¿Qué sucede?
+
+¿Tienes el número de la cuenta? 58478505000 Muchísimas gracias. En este momento el sistema me registra que el canal no está contratado.
+
+Por ese motivo no lo puedes ver.
+
+[Orador 1]
+¿Usted no me escuchó al inicio de la llamada que le estoy diciendo que yo pago mi canal y que hoy me lo quitaron? En media hora voy a tener el partido. ¿Y cómo es posible que usted venga y me esté diciendo eso?
+
+¡Revise su sistema bien! ¡Ay por Dios!
+
+[Orador 2]
+Te pido una disculpa. De todo te pido una disculpa. De verdad estoy haciendo lo posible por ayudarte.
+
+El canal no está contratado en este momento. ¿Tú tienes una factura donde estés viendo el cargo para que la revisemos entre los dos?
+
+[Orador 1]
+No tengo por qué estar perdiendo el tiempo con usted cuando yo claramente le estoy diciendo que yo pago ese canal todos los días. Veo mi canal y lo pago mensualmente. ¿Usted va a saber más que yo de lo que yo pago mi factura?
+
+[Orador 2]
+No, claro que no. Perdóname que te haga sentir de esa manera. No es mi intención.
+
+Mi intención es ayudarte. Voy a actualizar el sistema para validar si fue un error de sistema. No, la verdad no fue un error.
+
+He actualizado y me sigue registrando que el canal nunca ha sido contratado.
+
+[Orador 1]
+Mire, Arquímedes. Ayuda, ayuda, ayuda. No me está ayudando nada.
+
+Me hace el favor de que me pase a su supervisor.
+
+[Orador 2]
+Lamento profundamente que sientas que no te estoy ayudando. ¿Me confirma por favor por qué deseas hablar con mi supervisor? Si yo tengo la capacidad de brindarte la solución.
+
+[Orador 1]
+¿Estás seguro que estás en la capacidad de brindarte una solución cuando te estoy diciendo desde el inicio de la llamada pero parece que no estás pendiente de lo que te estoy hablando? De que yo tengo mi canal contratado y usted que me dice que no, que no, que no, que no. Cuando yo sé cuánto pago y desde el otro año tengo mi canal en más.
+
+Hace poco vi un partido en ese mismo canal y tú me vienes a mí a decir ahorita que no lo tengo contratado cuando falta media hora. ¿Ustedes son de verdad? ¿Qué hay?
+
+Por Dios.
+
+[Orador 2]
+¿De pronto será que lo contrataste en otro domicilio y por eso no lo tenemos acá en el sistema?
+
+[Orador 1]
+Yo tengo un solo domicilio y yo sé las facturas que pago. ¿Hasta cuándo usted me va a hacer repetirle lo mismo, lo mismo, lo mismo? Páseme a su supervisor.
+
+¿Cuál capacidad de ayudarme? No me está ayudando en nada. Me pasa a su supervisor.
+
+[Orador 2]
+Vale, sino que en este momento los supervisores no están habilitados. Si es así, yo coloco la información y ellos te gobiernan la llamada.
+
+[Orador 1]
+Sí, así como hacen siempre, evadiendo las responsabilidades como empresa. No, me haces el favor y quiero mi supervisor. Ya, si no quieres, yo tengo toda la disposición de quedarme aquí todo el tiempo en la llamada para que me pase el supervisor.
+
+[Orador 2]
+Comprendo. Sin embargo, la única solución que tenemos en este momento es contratar el canal y cuesta 100 dólares.
+
+[Orador 1]
+¡Ay, no! De paso me va a cobrar otra vez. Entonces, mensualmente yo tengo que estar pagando el canal y este mes se lo tengo que pagar doble.
+
+No, no, no y no. ¿Cómo que no? ¿Usted se llama Artínez?
+
+Me hace el favor entonces y voy a cancelar este vicio porque no sirve. Todos mis vecinos se van a enterar de lo porquería que es el servicio.
+
+[Orador 2]
+Lamento profundamente que quieras cancelar el servicio, pero como te indico, como no tenemos contratado el canal, no lo podemos ver. La solución es contratarlo pagando 100 dólares. Esa es la solución que te puedo ofrecer.
+
+[Orador 1]
+Es que usted es un robot. Me repite, me repite, me repite, me repite lo mismo. Me hace el favor y ya no quiero hablar más con usted.
+
+Me pasa a desconexión. ¡Qué horror con este servicio!
+
+[Orador 2]
+Claro que sí. Entonces, yo te pido disculpas. Te voy a comunicar con el área de cancelación.
+
+[Orador 1]
+Sí, pásame con el área de desconexión. No te quiero escuchar.
+
+[Orador 2]
+Vale, entonces voy a hacer la llamada y te pido disculpas por todas las molestias ocasionadas. Que tengas una excelente tarde.
+
+[Orador 1]
+Gracias.

@@ -4,6 +4,7 @@ enum TokenType {
   NEUTRAL = "NEUTRAL",
   SALUDO = "SALUDO",
   DESPEDIDA = "DESPEDIDA",
+  IDENTIFICACION = "IDENTIFICACION",
 }
 
 class TokenTypeHelper {
@@ -26,6 +27,8 @@ class TokenTypeHelper {
       case TokenType.SALUDO:
       case TokenType.DESPEDIDA:
         return 3;
+      case TokenType.IDENTIFICACION:
+        return 1;
       default:
         return 0;
     }

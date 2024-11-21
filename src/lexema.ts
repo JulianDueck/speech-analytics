@@ -15,25 +15,20 @@ class Lexema {
   public peso: number;
   public pesoO: number;
   public readonly length: number;
+  public speaker?: string;
 
-  constructor(lexemas: string[], token: TokenType, peso: number) {
+  constructor(lexemas: string[], token: TokenType, peso: number, speaker?: string) {
     this.id = lexemas.join("_");
     this.lexemas = lexemas;
     this.token = token;
-
-    if (token === TokenType.NEUTRAL) {
-      this.peso = 0;
-      this.pesoO = 0;
-    } else {
-      this.peso = peso;
-      this.pesoO = peso;
-    }
-
+    this.peso = peso;
+    this.pesoO = peso;
     this.length = lexemas.length;
+    this.speaker = speaker;
   }
 
   toString(): string {
-    return `Lexema(${this.lexemas.join(" ")}): ${TokenTypeHelper.getTitle(this.token)}`;
+    return `Lexema(${this.lexemas.join(" ")})[${this.speaker}]: ${TokenTypeHelper.getTitle(this.token)}`;
   }
 
   get root(): string {

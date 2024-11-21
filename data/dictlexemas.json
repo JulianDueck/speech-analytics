@@ -98,6 +98,30 @@
             "length": 3
         }
     },
+    "con": {
+        "con_quien_hablo": {
+            "id": "con_quien_hablo",
+            "lexemas": [
+                "con",
+                "quien",
+                "hablo"
+            ],
+            "token": "IDENTIFICACION",
+            "peso": 1,
+            "length": 3
+        }
+    },
+    "porquería": {
+        "porquería": {
+            "id": "porquería",
+            "lexemas": [
+                "porquería"
+            ],
+            "token": "MALO",
+            "peso": 3,
+            "length": 1
+        }
+    },
     "claro": {
         "claro": {
             "id": "claro",

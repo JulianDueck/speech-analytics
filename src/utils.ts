@@ -63,6 +63,7 @@ function getTokenType(tokenStr: string): TokenType {
     NEUTRAL: TokenType.NEUTRAL,  // Token para palabras neutrales
     SALUDO: TokenType.SALUDO,    // Token para saludos
     DESPEDIDA: TokenType.DESPEDIDA, // Token para despedidas
+    IDENTIFICACION: TokenType.IDENTIFICACION, // Token para identificaciones
   };
 
   // Obtiene el tipo de token del mapeo
@@ -101,7 +102,6 @@ export async function leerDictlexemas(): Promise<DictLexemas | null> {
       // un tipo de token y un peso
       for (const [lexemaKey, item] of Object.entries(value)) {
         const tokenType = getTokenType(item.token);
-
         // Crea una nueva instancia de Lexema con los datos del archivo
         const lexema = new Lexema(item.lexemas, tokenType, item.peso);
         lexemas[lexemaKey] = lexema;
