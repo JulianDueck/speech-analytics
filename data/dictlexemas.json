@@ -1,0 +1,174 @@
+{
+    "buen": {
+        "buen_dia": {
+            "id": "buen_dia",
+            "lexemas": [
+                "buen",
+                "dia"
+            ],
+            "token": "SALUDO",
+            "peso": 2,
+            "length": 2
+        }
+    },
+    "no": {
+        "no_puedo": {
+            "id": "no_puedo",
+            "lexemas": [
+                "no",
+                "puedo"
+            ],
+            "token": "MALO",
+            "peso": 4,
+            "length": 2
+        },
+        "no_muchas_gracias": {
+            "id": "no_muchas_gracias",
+            "lexemas": [
+                "no",
+                "muchas",
+                "gracias"
+            ],
+            "token": "BUENO",
+            "peso": 3,
+            "length": 3
+        }
+    },
+    "muy": {
+        "muy_amable": {
+            "id": "muy_amable",
+            "lexemas": [
+                "muy",
+                "amable"
+            ],
+            "token": "BUENO",
+            "peso": 3,
+            "length": 2
+        }
+    },
+    "hasta": {
+        "hasta_luego": {
+            "id": "hasta_luego",
+            "lexemas": [
+                "hasta",
+                "luego"
+            ],
+            "token": "DESPEDIDA",
+            "peso": 2,
+            "length": 2
+        }
+    },
+    "consultar": {
+        "consultar_mi_saldo": {
+            "id": "consultar_mi_saldo",
+            "lexemas": [
+                "consultar",
+                "mi",
+                "saldo"
+            ],
+            "token": "NEUTRAL",
+            "peso": 0,
+            "length": 3
+        }
+    },
+    "en": {
+        "en_qué_puedo_ayudarle": {
+            "id": "en_qué_puedo_ayudarle",
+            "lexemas": [
+                "en",
+                "qué",
+                "puedo",
+                "ayudarle"
+            ],
+            "token": "BUENO",
+            "peso": 3,
+            "length": 4
+        }
+    },
+    "número": {
+        "número_de_documento": {
+            "id": "número_de_documento",
+            "lexemas": [
+                "número",
+                "de",
+                "documento"
+            ],
+            "token": "NEUTRAL",
+            "peso": 0,
+            "length": 3
+        }
+    },
+    "claro": {
+        "claro": {
+            "id": "claro",
+            "lexemas": [
+                "claro"
+            ],
+            "token": "NEUTRAL",
+            "peso": 0,
+            "length": 1
+        }
+    },
+    "doscientos": {
+        "doscientos": {
+            "id": "doscientos",
+            "lexemas": [
+                "doscientos"
+            ],
+            "token": "NEUTRAL",
+            "peso": 0,
+            "length": 1
+        }
+    },
+    "buenos": {
+        "buenos_días": {
+            "id": "buenos_días",
+            "lexemas": [
+                "buenos",
+                "días"
+            ],
+            "token": "SALUDO",
+            "peso": 3,
+            "length": 2
+        }
+    },
+    "atención": {
+        "atención_al_cliente": {
+            "id": "atención_al_cliente",
+            "lexemas": [
+                "atención",
+                "al",
+                "cliente"
+            ],
+            "token": "NEUTRAL",
+            "peso": 0,
+            "length": 3
+        }
+    },
+    "que": {
+        "que_tenga_un_buen_día": {
+            "id": "que_tenga_un_buen_día",
+            "lexemas": [
+                "que",
+                "tenga",
+                "un",
+                "buen",
+                "día"
+            ],
+            "token": "DESPEDIDA",
+            "peso": 3,
+            "length": 5
+        }
+    },
+    "gracias": {
+        "gracias": {
+            "id": "gracias",
+            "lexemas": [
+                "gracias"
+            ],
+            "token": "BUENO",
+            "peso": 1,
+            "length": 1
+        }
+    }
+}
