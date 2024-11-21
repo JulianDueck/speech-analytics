@@ -15,6 +15,7 @@ async function main() {
     console.log(`Tiene saludo: ${tokenizer.hasSaludo ? "Si" : "No"}`);
     console.log(`Tiene despedida: ${tokenizer.hasDespedida ? "Si" : "No"}`);
     console.log(`Tiene identificación del cliente: ${tokenizer.hasIdentificacion ? "Si" : "No"}`);
+    console.log(`Uso de palabras rudas: ${tokenizer.hasRuda ? "Si" : "No"}`);
 
     const [message, score] = tokenizer.evaluation;
     console.log(`\nEvaluación final: ${message}`);

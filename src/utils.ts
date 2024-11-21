@@ -64,6 +64,7 @@ function getTokenType(tokenStr: string): TokenType {
     SALUDO: TokenType.SALUDO,    // Token para saludos
     DESPEDIDA: TokenType.DESPEDIDA, // Token para despedidas
     IDENTIFICACION: TokenType.IDENTIFICACION, // Token para identificaciones
+    RUDA: TokenType.RUDA, // Token para palabras rúdicas
   };
 
   // Obtiene el tipo de token del mapeo

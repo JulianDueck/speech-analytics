@@ -118,7 +118,40 @@
                 "porquería"
             ],
             "token": "MALO",
+            "peso": 2,
+            "length": 1
+        }
+    },
+    "inútil": {
+        "inútil": {
+            "id": "inútil",
+            "lexemas": [
+                "inútil"
+            ],
+            "token": "RUDA",
             "peso": 3,
+            "length": 1
+        }
+    },
+    "tonto": {
+        "tonto": {
+            "id": "tonto",
+            "lexemas": [
+                "tonto"
+            ],
+            "token": "RUDA",
+            "peso": 2,
+            "length": 1
+        }
+    },
+    "estúpido": {
+        "estúpido": {
+            "id": "estúpido",
+            "lexemas": [
+                "estúpido"
+            ],
+            "token": "RUDA",
+            "peso": 2,
             "length": 1
         }
     },

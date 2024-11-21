@@ -41,38 +41,47 @@ class MinimalTokenizer {
     );
   }
 
-  get evaluation(): [string, number] {
-    const [buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso] = this.categorizeSumWeights();
+  get hasRuda(): boolean {
+    return this.tokenizedLex.some(
+      lex => lex.token === TokenType.RUDA && lex.speaker === "Orador 2"
+    );
+  }
 
-    // console.log(`Pesos - Bueno: ${buenoSum}, Malo: ${maloSum}, Saludo: ${saludoPeso}, Despedida: ${despedidaPeso}`);
+  get evaluation(): [string, number] {
+    const [buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso, rudaPeso] = this.categorizeSumWeights();
+
+    console.log(`Pesos - Bueno: ${buenoSum}, Malo: ${maloSum}, Saludo: ${saludoPeso}, Despedida: ${despedidaPeso}, Identificación: ${identificacionPeso}, Ruda: ${rudaPeso}`);
 
     const [
       buenoNormalized,
       maloNormalized,
       saludoNormalized,
       despedidaNormalized,
-      identificacionNormalized
-    ] = this.normalizeWeights(buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso);
+      identificacionNormalized,
+      rudaNormalized
+    ] = this.normalizeWeights(buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso, rudaPeso);
 
-    // console.log(`Pesos normalizados - Bueno: ${buenoNormalized}, Malo: ${maloNormalized}, Saludo: ${saludoNormalized}, Despedida: ${despedidaNormalized}`);
+    console.log(`Pesos normalizados - Bueno: ${buenoNormalized}, Malo: ${maloNormalized}, Saludo: ${saludoNormalized}, Despedida: ${despedidaNormalized}, Identificación: ${identificacionNormalized}, Ruda: ${rudaNormalized}`);
     
     const score = this.finalEvaluation(
       buenoNormalized,
       maloNormalized,
       saludoNormalized,
       despedidaNormalized,
-      identificacionNormalized
+      identificacionNormalized,
+      rudaNormalized
     );
     
     return [this.mapScoreToCategory(score), score];
   }
 
-  private categorizeSumWeights(): [number, number, number, number, number] {
+  private categorizeSumWeights(): [number, number, number, number, number, number] {
     let buenoSum = 0;
     let maloSum = 0;
     let saludoPeso = 0;
     let despedidaPeso = 0;
     let identificacionPeso = 0;
+    let rudaPeso = 0;
     for (const lexema of this.tokenizedLex) {
       const tokenHelper = new TokenTypeHelper(lexema.token);
       const defaultWeight = tokenHelper.getDefaultWeight();
@@ -93,10 +102,13 @@ class MinimalTokenizer {
         case TokenType.IDENTIFICACION:
           identificacionPeso += lexema.peso * defaultWeight;
           break;
+        case TokenType.RUDA:
+          rudaPeso += lexema.peso * defaultWeight;
+          break;
       }
     }
 
-    return [buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso];
+    return [buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso, rudaPeso];
   }
 
   private normalizeWeights(
@@ -104,17 +116,19 @@ class MinimalTokenizer {
     maloSum: number,
     saludoPeso: number,
     despedidaPeso: number,
-    identificacionPeso: number
-  ): [number, number, number, number, number] {
-    const total = buenoSum + maloSum + saludoPeso + despedidaPeso + identificacionPeso;
-    if (total === 0) return [0, 0, 0, 0, 0];
+    identificacionPeso: number,
+    rudaPeso: number
+  ): [number, number, number, number, number, number] {
+    const total = buenoSum + maloSum + saludoPeso + despedidaPeso + identificacionPeso + rudaPeso;
+    if (total === 0) return [0, 0, 0, 0, 0, 0];
 
     return [
       buenoSum / total,
       maloSum / total,
       saludoPeso / total,
       despedidaPeso / total,
-      identificacionPeso / total
+      identificacionPeso / total,
+      rudaPeso / total
     ];
   }
 
@@ -123,14 +137,15 @@ class MinimalTokenizer {
     maloNormalized: number,
     saludoNormalized: number,
     despedidaNormalized: number,
-    identificacionNormalized: number
+    identificacionNormalized: number,
+    rudaNormalized: number
   ): number {
     if (!this.hasSaludo) {
-      saludoNormalized -= 0.2 * new TokenTypeHelper(TokenType.SALUDO).getDefaultWeight();
+      saludoNormalized -= 0.1 * new TokenTypeHelper(TokenType.SALUDO).getDefaultWeight();
     }
 
     if (!this.hasDespedida) {
-      despedidaNormalized -= 0.2 * new TokenTypeHelper(TokenType.SALUDO).getDefaultWeight();
+      despedidaNormalized -= 0.1 * new TokenTypeHelper(TokenType.SALUDO).getDefaultWeight();
     }
 
     return (
@@ -138,7 +153,8 @@ class MinimalTokenizer {
       maloNormalized +
       saludoNormalized +
       despedidaNormalized +
-      identificacionNormalized
+      identificacionNormalized -
+      rudaNormalized
     );
   }
 
