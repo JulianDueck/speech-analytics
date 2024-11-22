@@ -166,6 +166,10 @@ class Sentimiento {
       despedidaNormalized -= 0.1 * new TokenTypeHelper(TokenType.SALUDO).getDefaultWeight();
     }
 
+    if (this.hasRudo) {
+      rudoNormalized -= 0.3 * new TokenTypeHelper(TokenType.RUDO).getDefaultWeight();
+    }
+
     return (
       buenoNormalized -
       maloNormalized +
