@@ -47,41 +47,41 @@ class Tokenizer {
       return this.oracion();
     } else if (this.isLetra(this.currentToken)) {
       const [palabra, speaker] = this.palabra();
-      const [words, speakers] = this.cuerpo();
+      const [words, speakers] = this.palabras();
       return [[palabra].concat(words), [speaker].concat(speakers)];
     } else {
       this.simbolo();
-      return this.cuerpo();
+      return this.palabras();
     }
   }
 
-  private cuerpo(): [string[], string[]] {
+  private palabras(): [string[], string[]] {
     if (this.currentToken === null) {
       return [[], []];
     }
     if (this.isSpeakerTag(this.currentToken)) {
       this.processSpeakerTag();
-      return this.cuerpo();
+      return this.palabras();
     } else if (this.isLetra(this.currentToken)) {
       const [palabra, speaker] = this.palabra();
-      const [words, speakers] = this.cuerpo();
+      const [words, speakers] = this.palabras();
       return [[palabra].concat(words), [speaker].concat(speakers)];
     } else {
       this.simbolo();
-      return this.cuerpo();
+      return this.palabras();
     }
   }
 
   private palabra(): [string, string] {
-    return [this.letra() + this.cola(), this.currentSpeaker || 'UNKNOWN'];
+    return [this.letra() + this.letras(), this.currentSpeaker || 'UNKNOWN'];
   }
 
-  private cola(): string {
+  private letras(): string {
     if (this.currentToken === null) {
       return "";
     }
     if (this.isLetra(this.currentToken)) {
-      return this.letra() + this.cola();
+      return this.letra() + this.letras();
     } else {
       return this.simbolo();
     }
