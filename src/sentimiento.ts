@@ -47,6 +47,24 @@ class Sentimiento {
     );
   }
 
+  get palabrasPositivas(): number {
+    return this.tokenizedLex.filter(lex => lex.token === TokenType.BUENO).length;
+  }
+
+  get palabrasNegativas(): number {
+    return this.tokenizedLex.filter(lex => lex.token === TokenType.MALO).length;
+  }
+
+  get palabraMasPositiva(): [string, number] {
+    const lexema = this.tokenizedLex.filter(lex => lex.token === TokenType.BUENO).reduce((prev, curr) => prev.peso > curr.peso ? prev : curr);
+    return [lexema.lexemas.join(" "), lexema.peso];
+  }
+
+  get palabraMasNegativa(): [string, number] {
+    const lexema = this.tokenizedLex.filter(lex => lex.token === TokenType.MALO).reduce((prev, curr) => prev.peso > curr.peso ? prev : curr);
+    return [lexema.lexemas.join(" "), lexema.peso];
+  }
+
   get evaluation(): [string, number] {
     const [buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso, rudoPeso] = this.categorizeSumWeights();
 

@@ -21,6 +21,11 @@ async function main() {
     console.log(`\nEvaluación final: ${message}`);
     console.log(`(${score.toPrecision(2)})`);
 
+    console.log(`\nPalabras positivas: ${sentimiento.palabrasPositivas}`);
+    console.log(`\nPalabra más positiva: ${sentimiento.palabraMasPositiva[0]} (+${sentimiento.palabraMasPositiva[1]})`);
+    console.log(`\nPalabras negativas: ${sentimiento.palabrasNegativas}`);
+    console.log(`\nPalabra más negativa: ${sentimiento.palabraMasNegativa[0]} (-${sentimiento.palabraMasNegativa[1]})`);
+
     console.log("\nTokenized Lexemas:");
     for (const lex of sentimiento.tokenizedLexemas) {
       console.log(lex.toString());
