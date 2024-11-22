@@ -5,7 +5,7 @@ enum TokenType {
   SALUDO = "SALUDO",
   DESPEDIDA = "DESPEDIDA",
   IDENTIFICACION = "IDENTIFICACION",
-  RUDA = "RUDA",
+  RUDO = "RUDO",
 }
 
 class TokenTypeHelper {
@@ -28,7 +28,7 @@ class TokenTypeHelper {
       case TokenType.SALUDO:
       case TokenType.DESPEDIDA:
         return 3;
-      case TokenType.RUDA:
+      case TokenType.RUDO:
         return 4;
       case TokenType.IDENTIFICACION:
         return 1;

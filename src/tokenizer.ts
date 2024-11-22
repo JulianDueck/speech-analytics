@@ -1,4 +1,4 @@
-class Parser {
+class Tokenizer {
   private input: string[];
   private currentToken: string | null;
   private currentSpeaker: string | null;
@@ -179,4 +179,4 @@ class Parser {
   }
 }
 
-export default Parser;
+export default Tokenizer;

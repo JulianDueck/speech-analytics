@@ -2,7 +2,7 @@ import Lexema from "./lexema.ts";
 import { TokenType, TokenTypeHelper } from "./tokenType.ts";
 import { DictLexemas, leerDictlexemas } from "./utils.ts";
 
-class MinimalTokenizer {
+class Sentimiento {
   private oracion: string[];
   private speakers: string[];
   private dictlexemas: DictLexemas;
@@ -19,12 +19,12 @@ class MinimalTokenizer {
     this.tokenTypesFound = new Set<TokenType>();
   }
 
-  static async create(oracion: string[], speakers: string[]): Promise<MinimalTokenizer> {
+  static async create(oracion: string[], speakers: string[]): Promise<Sentimiento> {
     const dictlexemas = await leerDictlexemas();
     if (!dictlexemas) {
       throw new Error("Failed to load dictionary");
     }
-    return new MinimalTokenizer(oracion, speakers, dictlexemas);
+    return new Sentimiento(oracion, speakers, dictlexemas);
   }
 
   get hasSaludo(): boolean {
@@ -41,16 +41,16 @@ class MinimalTokenizer {
     );
   }
 
-  get hasRuda(): boolean {
+  get hasRudo(): boolean {
     return this.tokenizedLex.some(
-      lex => lex.token === TokenType.RUDA && lex.speaker === "Orador 2"
+      lex => lex.token === TokenType.RUDO && lex.speaker === "Orador 2"
     );
   }
 
   get evaluation(): [string, number] {
-    const [buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso, rudaPeso] = this.categorizeSumWeights();
+    const [buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso, rudoPeso] = this.categorizeSumWeights();
 
-    console.log(`Pesos - Bueno: ${buenoSum}, Malo: ${maloSum}, Saludo: ${saludoPeso}, Despedida: ${despedidaPeso}, Identificación: ${identificacionPeso}, Ruda: ${rudaPeso}`);
+    // console.log(`Pesos - Bueno: ${buenoSum}, Malo: ${maloSum}, Saludo: ${saludoPeso}, Despedida: ${despedidaPeso}, Identificación: ${identificacionPeso}, Rudo: ${rudoPeso}`);
 
     const [
       buenoNormalized,
@@ -58,10 +58,10 @@ class MinimalTokenizer {
       saludoNormalized,
       despedidaNormalized,
       identificacionNormalized,
-      rudaNormalized
-    ] = this.normalizeWeights(buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso, rudaPeso);
+      rudoNormalized
+    ] = this.normalizeWeights(buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso, rudoPeso);
 
-    console.log(`Pesos normalizados - Bueno: ${buenoNormalized}, Malo: ${maloNormalized}, Saludo: ${saludoNormalized}, Despedida: ${despedidaNormalized}, Identificación: ${identificacionNormalized}, Ruda: ${rudaNormalized}`);
+    // console.log(`Pesos normalizados - Bueno: ${buenoNormalized}, Malo: ${maloNormalized}, Saludo: ${saludoNormalized}, Despedida: ${despedidaNormalized}, Identificación: ${identificacionNormalized}, Rudo: ${rudoNormalized}`);
     
     const score = this.finalEvaluation(
       buenoNormalized,
@@ -69,7 +69,7 @@ class MinimalTokenizer {
       saludoNormalized,
       despedidaNormalized,
       identificacionNormalized,
-      rudaNormalized
+      rudoNormalized
     );
     
     return [this.mapScoreToCategory(score), score];
@@ -81,7 +81,7 @@ class MinimalTokenizer {
     let saludoPeso = 0;
     let despedidaPeso = 0;
     let identificacionPeso = 0;
-    let rudaPeso = 0;
+    let rudoPeso = 0;
     for (const lexema of this.tokenizedLex) {
       const tokenHelper = new TokenTypeHelper(lexema.token);
       const defaultWeight = tokenHelper.getDefaultWeight();
@@ -102,13 +102,13 @@ class MinimalTokenizer {
         case TokenType.IDENTIFICACION:
           identificacionPeso += lexema.peso * defaultWeight;
           break;
-        case TokenType.RUDA:
-          rudaPeso += lexema.peso * defaultWeight;
+        case TokenType.RUDO:
+          rudoPeso += lexema.peso * defaultWeight;
           break;
       }
     }
 
-    return [buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso, rudaPeso];
+    return [buenoSum, maloSum, saludoPeso, despedidaPeso, identificacionPeso, rudoPeso];
   }
 
   private normalizeWeights(
@@ -117,9 +117,9 @@ class MinimalTokenizer {
     saludoPeso: number,
     despedidaPeso: number,
     identificacionPeso: number,
-    rudaPeso: number
+    rudoPeso: number
   ): [number, number, number, number, number, number] {
-    const total = buenoSum + maloSum + saludoPeso + despedidaPeso + identificacionPeso + rudaPeso;
+    const total = buenoSum + maloSum + saludoPeso + despedidaPeso + identificacionPeso + rudoPeso;
     if (total === 0) return [0, 0, 0, 0, 0, 0];
 
     return [
@@ -128,7 +128,7 @@ class MinimalTokenizer {
       saludoPeso / total,
       despedidaPeso / total,
       identificacionPeso / total,
-      rudaPeso / total
+      rudoPeso / total
     ];
   }
 
@@ -138,7 +138,7 @@ class MinimalTokenizer {
     saludoNormalized: number,
     despedidaNormalized: number,
     identificacionNormalized: number,
-    rudaNormalized: number
+    rudoNormalized: number
   ): number {
     if (!this.hasSaludo) {
       saludoNormalized -= 0.1 * new TokenTypeHelper(TokenType.SALUDO).getDefaultWeight();
@@ -154,7 +154,7 @@ class MinimalTokenizer {
       saludoNormalized +
       despedidaNormalized +
       identificacionNormalized -
-      rudaNormalized
+      rudoNormalized
     );
   }
 
@@ -271,4 +271,4 @@ class MinimalTokenizer {
   }
 }
 
-export default MinimalTokenizer; 
+export default Sentimiento; 
